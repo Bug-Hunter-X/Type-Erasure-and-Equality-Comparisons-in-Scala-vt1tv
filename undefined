@@ -1,0 +1,20 @@
+```scala
+class MyClass[T](val value: T) {
+  def myMethod(other: MyClass[T]): Boolean = {
+    value.equals(other.value) 
+  }
+}
+
+object Main extends App {
+  val obj1 = new MyClass[Int](5)
+  val obj2 = new MyClass[Int](5)
+  val obj3 = new MyClass[String]("hello")
+  val obj4 = new MyClass[String]("hello")
+  val obj5 = new MyClass[MyClass[Int]](new MyClass[Int](5))
+  val obj6 = new MyClass[MyClass[Int]](new MyClass[Int](5))
+
+  println(obj1.myMethod(obj2)) // true
+  println(obj3.myMethod(obj4)) // true
+  println(obj5.myMethod(obj6)) // true
+}
+```
